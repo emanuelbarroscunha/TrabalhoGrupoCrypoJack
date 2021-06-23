@@ -1,0 +1,183 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Roboto";
+
+
+}
+
+
+ul, ol {
+  list-style-position: inside;
+}
+
+a:link {
+  font-family: "Roboto";
+  font-weight: 600;
+  text-decoration: none;
+  color: #b20101;
+}
+a:visited, a:active {
+  text-decoration: none;
+  color: #680808;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #E87E20;
+}
+
+nav {
+  display: block;
+  background-color: #fffffffd;
+  color: #ecedee;
+
+  border-bottom: 2.70px solid #8888881c;
+  min-height: 100px;
+  z-index: 1;
+
+}
+
+nav h1 {
+  line-height: 1;
+  font-size: 2em;
+  font-weight: 800;
+}
+
+nav a {
+  color: #0198d4;
+  text-transform: uppercase;
+}
+
+nav a:link {
+  color: #ff0000;
+}
+
+nav a:hover {
+  color: #cc0202;
+}
+
+nav a:visited, nav a:active {
+
+
+  color: #0198d4;
+
+}
+
+#logo {
+  display: block;
+  padding: 20px 30px;
+  float: left;
+
+}
+
+nav label {
+  display: block;
+  float: right;
+  padding: 40px;
+  clear: after;
+}
+
+nav label div {
+width: 35px;
+height: 5px;
+background-color: #0198d4;
+margin: 6px 0;
+}
+
+nav ul {
+  display: none;
+  list-style:none;
+  clear: both;
+}
+
+nav ul li {
+  display: block;
+}
+
+nav ul li a {
+  display: block;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background: #06060600;
+  float: none;
+}
+
+nav ul li a:hover {
+  background: #22222200;
+}
+
+nav ul:active {
+   display: block;
+}
+
+#drop {
+    display: none;
+}
+
+#drop:checked ~ ul {
+  display: block;
+  clear: both;
+}
+
+@media screen and (min-width: 768px) {
+
+#logo {
+  padding: 30px 50px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav label {
+  display: none;
+}
+
+nav ul {
+
+  display: block;
+  float: right;
+  padding: 0px 20px;
+}
+
+nav ul li {
+  display: inline-block;
+  min-width: 120px;
+}
+
+nav ul li a {
+
+  background: #12121200;
+}
+
+nav ul li a:hover {
+  background: #fd101000;
+  color: #489ceb;
+}
+
+}
+
+@media screen and (max-width: 768px) {
+  nav a {
+    color: #0198d4;
+    text-transform: uppercase;
+    border-top: 2.70px solid #8888881c;
+
+  }
+
+}

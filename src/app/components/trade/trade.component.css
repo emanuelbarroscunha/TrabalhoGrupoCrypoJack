@@ -1,0 +1,141 @@
+ 
+.separacao
+{
+  height:600px;
+  width: 100%;
+  border-bottom: 2.70px solid #8383831c;
+  display: flex;
+  justify-content: center;
+
+}
+
+#separacao2
+{
+  height:900px;
+  width: 100%;
+  border-bottom: 2.70px solid #8383831c;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  background-color: #003ac20a;
+}
+.div1{width: 50%;background-color: #37c20000;}
+.div2{width: 50%;background-color: #b200c200;}
+h1{
+  font-size:4rem;
+}
+.img{
+  margin-left: -460px;
+  width: 100%;
+  height: 400px;
+  background-image: url("b.jpg");
+  background-size:105% 80%;
+  background-repeat: no-repeat;
+}
+ h3
+{
+  color: #0198d4;
+  font-size:2rem;
+}
+
+@media screen and (max-width: 1500px) {
+
+  .img{
+    margin: auto;
+  }
+
+  .info{
+
+    padding-top:280px;
+  }
+
+  .separacao
+  {
+  height:700px;
+  }
+}
+
+.button
+{
+  letter-spacing: 1px;
+  font-weight: 550;
+  background-color: #0198d4;
+  border: none;
+  border-radius: 1px;
+  color: white;
+  padding: 10px 26px;
+  text-decoration: none;
+  font-size: 16px;
+
+  cursor: pointer;
+
+  margin: 2px;
+}
+
+.r{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background:rgba(128, 255, 0, 0);
+  width: 100%;
+}
+.button:hover
+{
+  background-color: #0085c2;
+  transition: 0.5s;
+}
+
+
+
+.info{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -370px;
+    text-align: left;
+  }
+
+.img2{
+  margin-left: 40px;
+  margin-top: 100px;
+  background-color: rgba(250, 235, 215, 0);
+  width: 50%;
+  height: 22%;
+  background-image: url("bit.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+@media screen and (max-width: 1000px) {.separacao2{flex-direction: column;}
+
+.div1{height: 100%;background-color: #37c20000;width: 100%;}
+.div2{height: 100%;background-color: #b200c200;width: 100%;}}
+
+h4{
+  margin-top: 10px;
+  margin-left: 20px;
+  font-size: 3.5em;
+  color: rgb(47, 255, 81);
+}
+
+.div22
+{
+  margin-top: 200px;
+  font-size: 2.5em;
+  font-weight: 800;
+}
+
+a{color: #4cc24c;font-size: 1.35em;}
+
+.footer{
+  width: 100%;
+  height: 220px;
+  background: #ffffffb4;
+  display: flex;
+  justify-content: center;
+  margin-top: 230px;
+  opacity: 0.4;
+}
+
+
