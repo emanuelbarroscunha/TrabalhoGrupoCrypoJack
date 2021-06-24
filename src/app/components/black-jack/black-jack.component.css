@@ -1,0 +1,88 @@
+.mesa {
+  background-color: #2660b8;
+  width: 100vw;
+  height: 100vh;
+  border: 20px #471300 solid;
+}
+.coins {
+  margin-top: 5vh;
+}
+.coins img {
+  height: 100px;
+  margin-right: 15px;
+  width: 80px;
+  height: 80px;
+}
+.coin:hover {
+  color: white;
+  opacity: 0.6;
+  transition: 0.3s;
+  transform: translateY(-10px);
+}
+.coins button {
+  background-color: transparent;
+  border: none;
+}
+h4 {
+  margin-top: 5px;
+  margin-left: 20px;
+  font-size: 20px;
+  color: rgb(240, 240, 26);
+}
+.carteira {
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  background-color: rgba(204, 204, 204, 0.082);
+  width: 200px;
+  height: 100px;
+  margin-top: 15px;
+  margin-left: 15px;
+  border: solid rgba(0, 0, 0, 0.397);
+}
+.cartas {
+  margin-top: 50vh;
+  margin-left: 50vw;
+}
+.container {
+  margin-left: 0;
+}
+.btns {
+  margin-right: 100px;
+  margin-top: -10vh;
+  margin-left: 60vw;
+}
+.btn {
+  background-color: #09306b;
+  width: 120px;
+  height: 50px;
+  justify-content: space-around ;
+  border-color : #ffffff;
+  border-radius: 30px;
+  color: rgb(255, 255, 255);
+  margin-left: 12px;
+  margin-right: 12px;
+  justify-content:flex-start;
+
+}
+
+.btn:hover {
+  background: #535353;
+
+}
+.card {
+  height: 250px;
+  margin-top: 50px;
+}
+.card2{
+  margin-top: -10vh;
+  width: 100px;
+  height: 200px;
+  display: inline-block;
+  border: solid white;
+  }
+
+  .carta{
+    margin: 50px 50px 0 0;
+    height: 250px;
+  }
