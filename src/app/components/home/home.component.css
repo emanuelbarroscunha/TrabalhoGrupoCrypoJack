@@ -1,0 +1,75 @@
+.global{
+  height:900px;
+  width: auto;
+  background-color:transparent;
+
+}
+.cards{
+  height: auto;
+  width: auto;
+  color:transparent;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.textbt{
+  text-decoration: none;
+  color: white;
+  font-size: 40px;
+}
+
+.cryptobt{
+  width: 400px;
+  height: 400px;
+  color: transparent;
+  border: none;
+  border-radius: 30px;
+  background-image: url(../../../assets/img/bgcrypto.jpg);
+  background-repeat: no-repeat;
+  background-size: 400px 400px;
+  transition: 0.3s;
+  color: white;
+}
+
+.cryptobt:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.cryptobt:active {
+  background-color:#333333;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.cards2{
+  height: auto;
+  width: auto;
+  color:transparent;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.blackjackbt{
+  width: 400px;
+  height: 400px;
+  color: transparent;
+  border: none;
+  background-image: url(../../../assets/img/blackjackbg.jpg);
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  background-size: 400px 400px;
+  transition: 0.3s;
+  color: white;
+}
+
+.blackjackbt:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.blackjackbt:active {
+  background-color:#333333;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

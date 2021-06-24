@@ -1,8 +1,8 @@
 .mesa {
-  background-color: #2660b8;
+  background-color:green;
   width: 100vw;
-  height: 100vh;
-  border: 20px #471300 solid;
+  height: 110vh;
+  background-color: green;
 }
 .coins {
   margin-top: 5vh;
@@ -10,8 +10,8 @@
 .coins img {
   height: 100px;
   margin-right: 15px;
-  width: 80px;
-  height: 80px;
+  width: auto;
+  height:150px;
 }
 .coin:hover {
   color: white;
@@ -27,18 +27,21 @@ h4 {
   margin-top: 5px;
   margin-left: 20px;
   font-size: 20px;
-  color: rgb(240, 240, 26);
+  color:yellow;
+  font-family: "Roboto";
 }
 .carteira {
   color: white;
   text-align: center;
   font-size: 15px;
-  background-color: rgba(204, 204, 204, 0.082);
+  background-color: green;
   width: 200px;
   height: 100px;
-  margin-top: 15px;
+  margin-top: -15px;
   margin-left: 15px;
-  border: solid rgba(0, 0, 0, 0.397);
+  margin-right: auto;
+  margin-left: auto;
+  font-family: "Roboto";
 }
 .cartas {
   margin-top: 50vh;
@@ -46,29 +49,77 @@ h4 {
 }
 .container {
   margin-left: 0;
+  border: 2px solid black;
+  border-radius: 20px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 500px;
+  margin-top: 5px;
 }
-.btns {
+
+.container2 {
+  margin-left: 0;
+  width: 100%;
+  height: 500px;
+}
+.btns{
   margin-right: 100px;
   margin-top: -10vh;
   margin-left: 60vw;
 }
-.btn {
-  background-color: #09306b;
+.btngame1 {
+  background-color:red;
   width: 120px;
-  height: 50px;
+  height: 70px;
   justify-content: space-around ;
-  border-color : #ffffff;
-  border-radius: 30px;
-  color: rgb(255, 255, 255);
+  border: 1px solid black;
+  border-radius:10px;
+  color:white;
   margin-left: 12px;
   margin-right: 12px;
   justify-content:flex-start;
-
+  font-family: "Roboto";
+}
+.btngame2 {
+  background-color:lightgreen;
+  width: 120px;
+  height: 70px;
+  justify-content: space-around ;
+  border: 1px solid black;
+  border-radius:10px;
+  color:white;
+  margin-left: 12px;
+  margin-right: 12px;
+  justify-content:flex-start;
+  font-family: "Roboto";
+}
+.btngame3 {
+  background-color:black;
+  width: 120px;
+  height: 70px;
+  justify-content: space-around ;
+  border: 1px solid black;
+  border-radius:10px;
+  color:white;
+  margin-left: 12px;
+  margin-right: 12px;
+  justify-content:flex-start;
+  font-family: "Roboto";
 }
 
-.btn:hover {
-  background: #535353;
-
+.btngame4 {
+  background-color:darkred;
+  width: 120px;
+  height: 70px;
+  justify-content: space-around ;
+  border: 1px solid black;
+  border-radius:10px;
+  color:white;
+  margin-left: 12px;
+  margin-right: 12px;
+  justify-content:flex-start;
+  font-family: "Roboto";
 }
 .card {
   height: 250px;

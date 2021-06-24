@@ -1,8 +1,7 @@
 
 <div class="mesa">
-  <h4>carteira {{dinheiro}} €</h4>
   <div class="carteira">
-    <p>{{nomePlayer}}: {{playerPoints}}</p>
+    <p>Player1: {{playerPoints}}</p>
     <p>Dealer: {{dealerPoints}}</p>
     <p>Bet: {{bet}}</p>
   </div>
@@ -15,19 +14,19 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container2">
     <div class="row">
       <div class="coins col-md-6 pool-left">
-        <button class="coin" (click)="beting(1)"><img src="../../../assets/img/1.png"></button>
-        <button class="coin" (click)="beting(5)"><img src="../../../assets/img/5.png"></button>
+        <h4>Saldo: {{dinheiro}} €</h4>
+        <button class="coin" (click)="beting(20)"><img src="../../../assets/img/20.png"></button>
         <button class="coin" (click)="beting(50)"><img src="../../../assets/img/50.png"></button>
         <button class="coin" (click)="beting(100)"><img src="../../../assets/img/100.png"></button>
       </div>
       <div class="col-md-6 btns">
-        <button class="btn" (click)="pedir()">Pedir</button>
-        <button class="btn" (click)="ficar()">Ficar</button>
-        <button class="btn" [routerLink]="['/']">Sair da mesa</button>
-        <button class="btn" (click)="startGame()">Start</button>
+        <button class="btngame1" (click)="pedir()">Hit</button>
+        <button class="btngame2" (click)="ficar()">Stay</button>
+        <button class="btngame3" [routerLink]="['/']">Leave Room</button>
+        <button class="btngame4" (click)="startGame()">Start</button>
       </div>
     </div>
   </div>
