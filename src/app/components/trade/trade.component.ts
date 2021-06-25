@@ -73,7 +73,7 @@ export class TradeComponent implements OnInit {
     this.valueInBit =  this.localStorage.getname("valueInBit");
   }
 
-  buy1000(variavel : any)
+  buy(variavel : any)
   {
     if((Number(this.money)-variavel)>=0)
     {
