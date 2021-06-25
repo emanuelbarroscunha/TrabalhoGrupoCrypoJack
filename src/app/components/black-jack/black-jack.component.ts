@@ -13,271 +13,249 @@ export class BlackJackComponent implements OnInit {
   constructor(private blackJackS : BlackjackService, private http: HttpClient ,private localStorage:LocalStorageService) { }
 
   ngOnInit(): void {
-    this.getPlayer();
-    this.getDinheiro();
+
+    this.getCash();
   }
 
-  cartinhas : Array<string> = [];
-
-  carta : any;
-
-  bet : number = 0;
-  nomePlayer : string;
+  nomePlayer : string = "John Doe";
   playerPoints : number = 0;
-
+  pintasDasCartas : Array<string> = ["ACE","7","KING","JACK","QUEEN","10","9","8","6","5","4","3","2"];
+  money : number = 0;
+  dentroDoJogo : number = 0;
+  turn : number = 0;
   dealerPoints : number = 0;
 
+  setCash(){
+    this.localStorage.set("money",this.money);
+  }
+  getCash(){
+    this.money =Number( this.localStorage.getname("money"));
+  }
 
 
-  dinheiro : number = 0;
-  inGame : number = 0;
-  turno : number = 0;
-  gameStop : number = 0;
-  asPlayer : number = 0;
-  asDealer : number = 0;
+  getCard(){
+    this.blackJackS.getCard().subscribe(data => {console.log(data['cards'])});
+    console.log(this.deck['code']);
+  }
 
-  cartaRecebida : any;
-  cartaMao : any;
-  cartaDesenho : string;
-  posicao : number;
   value : number;
+  aposta : number = 0;
+  stopThegame : number = 0;
+  thisPlayer : number = 0;
+  thisDealer : number = 0;
+  carta : any;
+  deck : Array<string> = [];
+  cardgotten : any;
+  cartaImagem : string;
+  posicao : number;
+  cardInHand : any;
+  valorCartas : Array<number> = [11, 7, 10, 10, 10, 10, 9, 8, 6, 5, 4, 3, 2];
 
-  arrayValueCard : Array<string> = ["ACE","7","KING","JACK","QUEEN","10","9","8","6","5","4","3","2"];
+  shuffledeck(){
+    this.blackJackS.shuffle().subscribe((x =>{
+      if (x['success'] == true) {
 
-  arrayValue : Array<number> = [11, 7, 10, 10, 10, 10, 9, 8, 6, 5, 4, 3, 2];
+        this.dentroDoJogo = 0;
+      }
+      else{
+        console.log('error');
+      }
+    }));
 
-  arrayMaoJogador : Array<string>;
+    if(this.aposta >= 1){
+      this.playerPoints = 0;
+      this.dealerPoints = 0;
 
-  setdinheiro(){
-    this.localStorage.set("money",this.dinheiro);
+      this.dentroDoJogo = 1;
+
+      this.askcardPlayer();
+    }
+    else{
+      alert('Não tem aposta validada');
+    }
   }
-  getDinheiro(){
-    this.dinheiro =Number( this.localStorage.getname("money"));
-  }
 
-  //baralha cartas
   shuffle(){
     this.blackJackS.shuffle().subscribe();
   }
 
-  getCard(){
-    this.blackJackS.getCard().subscribe(data => {console.log(data['cards'])});
-    console.log(this.cartinhas['code']);
-  }
+  playGame(){
+    if(this.turn == 1){
 
-  //get player
-  getPlayer(){
-
-  }
-
-  //bet
-  beting(val){
-    if(this.inGame == 0){
-      if(val <= this.dinheiro){
-        this.dinheiro -= val;
-        this.bet += val;
-        this.setdinheiro();
-      }
-      else{
-        alert('Não tem dinheiro suficiente!');
-      }
+      this.pedirDealer();
     }
   }
 
-  //start game
-  startGame(){
-    this.blackJackS.shuffle().subscribe((x =>{
-      if (x['success'] == true) {
-        console.log('baralha');
-        this.inGame = 0;
-      }
-      else{
-        console.log('erro');
-      }
-    }));
 
-    if(this.bet >= 1){
-      this.playerPoints = 0;
-      this.dealerPoints = 0;
-
-      this.inGame = 1;
-
-      this.pedir(); //pede para o jogador
-    }
-    else{
-      alert('É preciso apostar!');
-    }
-  }
-
-  //pedir carta jogador
-  pedir(){
+  askcardPlayer(){
     if(this.dealerPoints >= 21 || this.playerPoints >= 21){
-      this.calcularVitoria();
-      this.inGame = 0;
+      this.victory();
+      this.dentroDoJogo = 0;
     }
     else{
       this.blackJackS.getCard().subscribe((x) => {
         if (x['success'] == true) {
-          //this.carta = x['cards'];
-          this.cartaRecebida = x;
-          this.cartaMao = this.cartaRecebida.cards[0].value;
-          this.cartaDesenho = this.cartaRecebida.cards[0].image;
 
-          this.cartinhas.push(x['cards'][0].image);
+          this.cardgotten = x;
+          this.cardInHand = this.cardgotten.cards[0].value;
+          this.cartaImagem = this.cardgotten.cards[0].image;
 
-          for (let i = 0; i < this.arrayValueCard.length; i++) {
-            if(this.arrayValueCard[i] == this.cartaMao){
+          this.deck.push(x['cards'][0].image);
+
+          for (let i = 0; i < this.pintasDasCartas.length; i++) {
+            if(this.pintasDasCartas[i] == this.cardInHand){
               this.posicao = i;
             }
           }
 
-          if(this.cartaMao == 'ACE'){
-            this.asPlayer += 1; //o player tem um as na mao
+          if(this.cardInHand == 'ACE'){
+            this.thisPlayer += 1;
           }
 
-          this.playerPoints += this.arrayValue[this.posicao]; //valor da mao
+          this.playerPoints += this.valorCartas[this.posicao];
 
-          /*
-          if(this.playerPoints > 21 || this.asPlayer == 1){
-            this.playerPoints -= 10;
-          }
-          */
 
-          //muda turno
-          this.turno = 1;
+
+
+          this.turn = 1;
           this.playGame();
         } else {
-          alert("error sem carta");
+          alert("error: sem carta");
         }
       });
     }
   }
 
-  ficar(){
-    console.log('ficar');
-    this.gameStop = 1;
+  apostar(val){
+    if(this.dentroDoJogo == 0){
+      if(val <= this.money){
+
+        this.aposta += val;
+        this.money -= val;
+
+        this.setCash();
+      }
+      else{
+        alert('Dinheiro da conta insufeciente');
+      }
+    }
+  }
+
+  stay(){
+
+    this.stopThegame = 1;
     this.pedirDealer();
   }
 
+
+  victory(){
+    if(this.playerPoints > this.dealerPoints && this.playerPoints <= 21){
+
+      this.money += this.aposta * 2;
+      this.setCash();
+      alert('Ganhou um total de :'+this.aposta * 2);
+
+      this.dentroDoJogo = 0;
+      this.stopThegame = 0;
+    }
+    else if(this.playerPoints > this.dealerPoints && this.playerPoints > 21){
+      this.money -= this.aposta;
+      alert('Perdeu um total de:'+this.aposta);
+      this.dentroDoJogo = 0;
+      this.stopThegame = 0;
+      this.setCash();
+    }
+    else if(this.dealerPoints > this.playerPoints && this.dealerPoints <= 21){
+
+      this.money -= this.aposta;
+      alert('Perdeu um total de:'+this.aposta);
+      this.dentroDoJogo = 0;
+      this.stopThegame = 0;
+      this.setCash();
+    }
+    else if(this.dealerPoints > this.playerPoints && this.dealerPoints > 21){
+
+      this.money += this.aposta * 2;
+      alert('Ganhou um total de:'+this.aposta * 2);
+      this.dentroDoJogo = 0;
+      this.stopThegame = 0;
+      this.setCash();
+    }
+    else{
+
+      this.money += this.aposta;
+      alert('Ganhou um total de'+this.aposta);
+      this.dentroDoJogo = 0;
+      this.setCash();
+    }
+
+    setTimeout(()=>{
+      this.playerPoints = 0;
+      this.dealerPoints = 0;
+      this.deck = [];
+      this.aposta = 0;
+    }, 2000);
+  }
+
+
   pedirDealer(){
-    if(this.gameStop == 1){ //pede mais uma carta ao dealer e depois calcula vitoria
-      if(this.dealerPoints <= 21){ //se o bot tiver carta <= 16 pede outra
+    if(this.stopThegame == 1){
+      if(this.dealerPoints <= 21){
         this.blackJackS.getCard().subscribe((x) => {
           if (x['success'] == true) {
             this.carta = x['cards'];
-            this.cartaRecebida = x;
-            this.cartaMao = this.cartaRecebida.cards[0].value;
-            //console.log(this.cartaMao);
+            this.cardgotten = x;
+            this.cardInHand = this.cardgotten.cards[0].value;
 
-            for (let i = 0; i < this.arrayValueCard.length; i++) {
-              if(this.arrayValueCard[i] == this.cartaMao){
+
+            for (let i = 0; i < this.pintasDasCartas.length; i++) {
+              if(this.pintasDasCartas[i] == this.cardInHand){
                 this.posicao = i;
               }
             }
-            console.log(this.cartaMao);
+            console.log(this.cardInHand);
 
-            this.dealerPoints += this.arrayValue[this.posicao]; //valor da mao
+            this.dealerPoints += this.valorCartas[this.posicao];
 
-            //muda turno
-            this.turno = 0;
+            this.turn = 0;
 
-            this.calcularVitoria();
+            this.victory();
           } else {
-            alert("error sem carta");
+            alert("nao tem carta");
           }
         });
       }
     }
     else if(this.dealerPoints >= 21 || this.playerPoints >= 21){
-      this.calcularVitoria();
-      this.inGame = 0;
-      console.log('dealer + 21');
+      this.victory();
+      this.dentroDoJogo = 0;
+
     }
     else{
-      if(this.dealerPoints <= 21){ //se o bot tiver carta <= 16 pede outra
+      if(this.dealerPoints <= 21){
         this.blackJackS.getCard().subscribe((x) => {
           if (x['success'] == true) {
             this.carta = x['cards'];
-            this.cartaRecebida = x;
-            this.cartaMao = this.cartaRecebida.cards[0].value;
-            //console.log(this.cartaMao);
+            this.cardgotten = x;
+            this.cardInHand = this.cardgotten.cards[0].value;
 
-            for (let i = 0; i < this.arrayValueCard.length; i++) {
-              if(this.arrayValueCard[i] == this.cartaMao){
+            for (let i = 0; i < this.pintasDasCartas.length; i++) {
+              if(this.pintasDasCartas[i] == this.cardInHand){
                 this.posicao = i;
               }
             }
-            console.log(this.cartaMao);
 
-            this.dealerPoints += this.arrayValue[this.posicao]; //valor da mao
 
-            //muda turno
-            this.turno = 0;
+            this.dealerPoints += this.valorCartas[this.posicao];
+
+
+            this.turn = 0;
           } else {
-            alert("error sem carta");
+            alert("nao tem carta selecionada");
           }
         });
       }
     }
   }
 
-  playGame(){
-    if(this.turno == 1){
-      this.pedirDealer();
-    }
-  }
-
-  calcularVitoria(){
-    if(this.playerPoints > this.dealerPoints && this.playerPoints <= 21){
-      //o que apostamos reavemos a dobrar
-      this.dinheiro += this.bet * 2;
-      this.setdinheiro();
-      alert('Ganhou!');
-      console.log('win');
-      this.inGame = 0;
-      this.gameStop = 0;
-    }
-    else if(this.playerPoints > this.dealerPoints && this.playerPoints > 21){
-      //o que apostamos reavemos a dobrar
-      alert('Perdeu!');
-      this.dinheiro -= this.bet;
-      console.log('Lose');
-      this.inGame = 0;
-      this.gameStop = 0;
-      this.setdinheiro();
-    }
-    else if(this.dealerPoints > this.playerPoints && this.dealerPoints <= 21){
-      alert('Perdeu! 1');
-      this.dinheiro -= this.bet;
-      console.log('lose');
-      this.inGame = 0;
-      this.gameStop = 0;
-      this.setdinheiro();
-    }
-    else if(this.dealerPoints > this.playerPoints && this.dealerPoints > 21){
-      //o que apostamos reavemos a dobrar
-      this.dinheiro += this.bet * 2;
-      alert('Ganhou!');
-      console.log('Win');
-      this.inGame = 0;
-      this.gameStop = 0;
-      this.setdinheiro();
-    }
-    else{ //caso empate
-      //o que apostamos reavemos a o dinheiro
-      this.dinheiro += this.bet;
-      //alert('draw');
-      this.inGame = 0;
-      this.setdinheiro();
-    }
-
-
-
-    setTimeout(()=>{
-      this.playerPoints = 0;
-      this.dealerPoints = 0;
-      this.cartinhas = [];
-      this.bet = 0;
-    }, 4000);
-  }
 }

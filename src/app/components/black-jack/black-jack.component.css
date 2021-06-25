@@ -1,23 +1,71 @@
-.mesa {
-  background-color:green;
+@media (max-width: 1000px) {
+
+  .theTable{
+    min-height: 140vh;
+  }
+  .container{
+    max-height: 300px;
+  }
+  .carta{
+    max-height:100px;
+  }
+  .coinsimage{
+    display: flex;
+    flex-direction: row;
+  }
+  .coinsimage img{
+    max-height: 90px;
+  }
+  .btns{
+    padding-top:120px ;
+  }
+}
+
+.coinsimage{
+  background-color: rgba(255, 0, 0, 0);
+}
+.btn{
+  font-weight: 800;
+  color: white;
+}
+.carteira {
+
+  padding: 10px;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  background-color: rgba(0, 0, 0, 0.413);
+  border-radius: 20px;
+  width: 200px;
+  height: 100px;
+  margin-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: "Roboto";
+}
+.theTable {
+
+  background-image: url("b1.jpg");
+  background-size: 100 50%;
   width: 100vw;
-  height: 110vh;
-  background-color: green;
+  height: 112vh;
+  margin-top: -15px;
 }
 .coins {
   margin-top: 5vh;
+
 }
 .coins img {
-  height: 100px;
+
   margin-right: 15px;
   width: auto;
   height:150px;
 }
 .coin:hover {
   color: white;
-  opacity: 0.6;
+  opacity: 1;
   transition: 0.3s;
-  transform: translateY(-10px);
+  transform: translateY(-30px);
 }
 .coins button {
   background-color: transparent;
@@ -27,22 +75,10 @@ h4 {
   margin-top: 5px;
   margin-left: 20px;
   font-size: 20px;
-  color:yellow;
+  color:rgb(90, 255, 69);
   font-family: "Roboto";
 }
-.carteira {
-  color: white;
-  text-align: center;
-  font-size: 15px;
-  background-color: green;
-  width: 200px;
-  height: 100px;
-  margin-top: -15px;
-  margin-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  font-family: "Roboto";
-}
+
 .cartas {
   margin-top: 50vh;
   margin-left: 50vw;
@@ -50,7 +86,7 @@ h4 {
 .container {
   margin-left: 0;
   border: 2px solid black;
-  border-radius: 20px;
+  border-radius: 2px;
   width: 60%;
   margin-left: auto;
   margin-right: auto;
@@ -68,58 +104,63 @@ h4 {
   margin-top: -10vh;
   margin-left: 60vw;
 }
+.btn:hover
+{
+  transition: 1s;
+  filter: brightness(70%);
+}
 .btngame1 {
-  background-color:red;
+  background-color:rgb(87, 190, 190);
   width: 120px;
-  height: 70px;
+  height: 50px;
   justify-content: space-around ;
-  border: 1px solid black;
-  border-radius:10px;
-  color:white;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius:1px;
+
   margin-left: 12px;
   margin-right: 12px;
   justify-content:flex-start;
-  font-family: "Roboto";
+
 }
 .btngame2 {
-  background-color:lightgreen;
+  background-color:rgb(207, 209, 101);
   width: 120px;
-  height: 70px;
+  height: 50px;
   justify-content: space-around ;
-  border: 1px solid black;
-  border-radius:10px;
-  color:white;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius:1px;
+
   margin-left: 12px;
   margin-right: 12px;
   justify-content:flex-start;
-  font-family: "Roboto";
+
 }
 .btngame3 {
-  background-color:black;
+  background-color:rgb(213, 80, 80);
   width: 120px;
-  height: 70px;
+  height: 50px;
   justify-content: space-around ;
-  border: 1px solid black;
-  border-radius:10px;
-  color:white;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius:1px;
+
   margin-left: 12px;
   margin-right: 12px;
   justify-content:flex-start;
-  font-family: "Roboto";
+
 }
 
 .btngame4 {
-  background-color:darkred;
+  background-color:rgb(80, 214, 98);
   width: 120px;
-  height: 70px;
+  height: 50px;
   justify-content: space-around ;
-  border: 1px solid black;
-  border-radius:10px;
-  color:white;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius:1px;
+
   margin-left: 12px;
   margin-right: 12px;
   justify-content:flex-start;
-  font-family: "Roboto";
+
 }
 .card {
   height: 250px;
@@ -136,4 +177,9 @@ h4 {
   .carta{
     margin: 50px 50px 0 0;
     height: 250px;
+  }
+
+  .container{
+    background-image: url("b2.jpg");
+    padding: 30px;
   }

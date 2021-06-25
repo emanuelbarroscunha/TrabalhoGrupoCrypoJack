@@ -1,14 +1,15 @@
 
-<div class="mesa">
+<div class="theTable">
+  <br>
   <div class="carteira">
-    <p>Player1: {{playerPoints}}</p>
-    <p>Dealer: {{dealerPoints}}</p>
-    <p>Bet: {{bet}}</p>
+    <p>Aposta: {{aposta}}</p>
+    <p>Pontos do Jogador: {{playerPoints}}</p>
+    <p>Pontos do dealer: {{dealerPoints}}</p>
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-md-12"  style="min-height: 350px;">
-        <a *ngFor="let cards of cartinhas">
+      <div style="min-height: 350px;">
+        <a *ngFor="let cards of deck">
           <img class="carta" src={{cards}} />
         </a>
       </div>
@@ -16,17 +17,20 @@
   </div>
   <div class="container2">
     <div class="row">
-      <div class="coins col-md-6 pool-left">
-        <h4>Saldo: {{dinheiro}} €</h4>
-        <button class="coin" (click)="beting(20)"><img src="../../../assets/img/20.png"></button>
-        <button class="coin" (click)="beting(50)"><img src="../../../assets/img/50.png"></button>
-        <button class="coin" (click)="beting(100)"><img src="../../../assets/img/100.png"></button>
+      <div class="coins ">
+        <h4>CASH: {{money}} €</h4>
+      <div class="coinsimage">
+        <button class="coin" (click)="apostar(100)"><img src="../../../assets/img/100.png"></button>
+        <button class="coin" (click)="apostar(50)"><img src="../../../assets/img/50.png"></button>
+        <button class="coin" (click)="apostar(20)"><img src="../../../assets/img/20.png"></button>
       </div>
-      <div class="col-md-6 btns">
-        <button class="btngame1" (click)="pedir()">Hit</button>
-        <button class="btngame2" (click)="ficar()">Stay</button>
-        <button class="btngame3" [routerLink]="['/']">Leave Room</button>
-        <button class="btngame4" (click)="startGame()">Start</button>
+      </div>
+      <div class=" btns">
+        <button class="btn btngame4" (click)="shuffledeck()">START</button>
+        <button class="btn btngame1" (click)="askcardPlayer()">HIT</button>
+        <button class="btn btngame2" (click)="stay()">STAY</button>
+        <button class="btn btngame3" [routerLink]="['/']">LEAVE </button>
+
       </div>
     </div>
   </div>
