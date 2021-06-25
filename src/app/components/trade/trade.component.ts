@@ -21,7 +21,6 @@ export class TradeComponent implements OnInit {
   storethisdata:any="nada";
   profit:any=0;
   valor:any=0;
-
   oldbitvalue:any=0;
 
   ngOnInit(): void {
@@ -55,12 +54,16 @@ export class TradeComponent implements OnInit {
 
   resetMoney()
   {
+    if(!this.localStorage.getname("money")){
+
     this.localStorage.set("money",10000);
     this.localStorage.set("moneyInvested",0);
     this.localStorage.set("valueInBit",0);
     this.setMoney();
-    let name5:any = document.getElementById('separacao2');
-    name5.style.display = 'flex';
+
+  }
+  let name5:any = document.getElementById('separacao2');
+  name5.style.display = 'flex';
   }
 
   setMoney()
@@ -70,13 +73,13 @@ export class TradeComponent implements OnInit {
     this.valueInBit =  this.localStorage.getname("valueInBit");
   }
 
-  buy1000()
+  buy1000(variavel : any)
   {
-    if((Number(this.money)-1000)>=0)
+    if((Number(this.money)-variavel)>=0)
     {
-      this.valueInBitAdd = 1000 / Number(this.bitValue);
-      this.localStorage.set("money",Number(this.money)-1000);
-      this.localStorage.set("moneyInvested",Number(this.moneyInvested)+1000);
+      this.valueInBitAdd = Number(variavel) / Number(this.bitValue);
+      this.localStorage.set("money",Number(this.money)-Number(variavel));
+      this.localStorage.set("moneyInvested",Number(this.moneyInvested)+Number(variavel));
       this.localStorage.set("valueInBit",Number(this.valueInBit)+Number(this.valueInBitAdd) );
 
       this.setMoney();

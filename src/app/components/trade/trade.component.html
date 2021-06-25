@@ -11,7 +11,7 @@
     <h3>John Doe</h3>
     <h3>Account Balance</h3>
     <h3><a>{{ money }}$</a> </h3>
-    <button class="button" (click)="resetMoney()">START/RESET APP</button>
+    <button class="button" (click)="resetMoney()">START</button>
   </div>
 
 
@@ -42,7 +42,8 @@
 <p>MONEY INVESTED <a>{{ moneyInvested }}</a>   </p>
 <p>YOUR TOTAL PROFIT <a> {{ profit }}</a>   </p>
 <button class="button" (click)="sell()">SELL</button>
-<button class="button" (click)="buy1000()">BUY 1000$</button>
+<button class="button" (click)="buy1000(variavel.value)">BUY</button>
+<input placeholder="valorCompra"  #variavel>
 </div>
 
 </div>

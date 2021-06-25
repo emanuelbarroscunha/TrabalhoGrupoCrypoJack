@@ -25,6 +25,9 @@
 h1{
   font-size:4rem;
 }
+input{
+  height:30px;
+}
 .img{
   margin-left: -460px;
   width: 100%;
