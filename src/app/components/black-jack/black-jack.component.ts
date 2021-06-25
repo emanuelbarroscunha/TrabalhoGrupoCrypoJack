@@ -158,7 +158,7 @@ export class BlackJackComponent implements OnInit {
       this.dentroDoJogo = 0;
       this.stopThegame = 0;
     }
-    else if(this.playerPoints > this.dealerPoints && this.playerPoints > 21){
+    else if( this.playerPoints > 21){
       this.money -= this.aposta;
       alert('Perdeu um total de:'+this.aposta);
       this.dentroDoJogo = 0;
@@ -173,7 +173,7 @@ export class BlackJackComponent implements OnInit {
       this.stopThegame = 0;
       this.setCash();
     }
-    else if(this.dealerPoints > this.playerPoints && this.dealerPoints > 21){
+    else if( this.dealerPoints > 21){
 
       this.money += this.aposta * 2;
       alert('Ganhou um total de:'+this.aposta * 2);
